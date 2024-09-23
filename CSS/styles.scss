@@ -6,10 +6,10 @@ $colorWhite: #ffffff;
 $colortext-green: #4ED575;
 $maxWidhtPercent:100%;
 $masWidhtpx: 100px;
-%widthImg820px {
+@mixin widthImg820px {
     width: 60px;
 }
-%widthImg480px {
+@mixin widthImg480px {
     width: 40px;
 }
 @mixin displayType ($type){
@@ -144,13 +144,13 @@ body {
         padding: 15px;
 
         &__logo {
-            @extend %widthImg820px;   
+            @include widthImg820px();   
         }
         &__icono {
-            @extend %widthImg820px;  
+            @include widthImg820px();  
         }
         &__i {
-            @extend %widthImg820px;  
+            @include widthImg820px();  
         }
     }
     .products {
@@ -172,13 +172,13 @@ body {
         padding: 15px;
 
         &__logo {
-           @extend %widthImg480px;  
+            @include widthImg480px();  
         }
         &__icono {
-            @extend %widthImg480px;  
+            @include widthImg480px();  
         }
         &__i {
-            @extend %widthImg480px;  
+            @include widthImg480px();  
         }
 
     }
