@@ -1,9 +1,12 @@
-.red2 {
-    color: red;
-}
-
 $colorWhite: #ffffff;
 $colortext-green: #4ED575;
+$colorbutton-green: #4CAF50;
+$colorbutton-green-hover:#45a049;
+$colorbutton-green-active:#3e8e41;
+$colorGrey: #b3b3b3d0;
+$colorBgHeader: #cde8fb;
+$colorAzulCielo: #0ca2f2;
+$colorBgMenu: #daf0ff;
 $maxWidhtPercent:100%;
 $masWidhtpx: 100px;
 @mixin widthImg820px {
@@ -25,38 +28,56 @@ body {
     font-size: 0.9rem;
     font-weight: 300;
     color: #999;
+    margin: 0;
 }
 .header {
     width: $maxWidhtPercent;
-    padding: 20px 50px;
-    background-color: #959090;
+    padding: 0px 10px;
+    background-color: $colorBgHeader;
     @include displayType(flex);
+    position: fixed;
+    z-index: 1;
     
     &__logo {
-        width: 100px;
+        width: 70px;
     }
     &__i {
-        width: 80px;
+        width: 50px;
         cursor: pointer;
         display: inline-block;
     }
     &__icono {
-        width: 100px;
+        width: 50px;
         color:$colorWhite;
+    }
+    &__carritoQty {
+        position: absolute;
+        top: -9px;
+        right: 4px;
+        background-color: #ffffff;
+        padding: 0px 4px;
+        border-radius: 50%;
+        color: $colorAzulCielo;
+        border-color: $colorAzulCielo;
+        border-style: solid;
+        font-weight: bold;
+        line-height: 19px;
+        font-size: 15px;
     }
 }
 .banner {
     width: $maxWidhtPercent;
-    padding: 60px 0;
+    padding: 100px 0;
     text-align: center;
     background-image: url("../img/Banner-Ampm.jpg");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 30%; 
+    background-size: 24%; 
+    opacity: 0.7;
 
     &__title {
         width: $maxWidhtPercent;
-        font-weight: 600;
+        font-weight: 800;
         font-size: 30px;
         color: #000000;
     }
@@ -64,6 +85,7 @@ body {
         width: 350px;
         margin: 0 auto;
         font-size: 25px;
+        font-weight: 500;
         opacity: 1;
         color: #000000;       
     }
@@ -74,6 +96,10 @@ body {
     padding: 20px;
     @include displayType(grid);
     grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    &__div-qty{
+        @include displayType(flex);
+        justify-content: center;
+    }
 
     &__item {
         cursor: pointer;
@@ -89,41 +115,66 @@ body {
         font-size: 17px;
         margin-bottom: 5px;
         &:hover {
-            color: $colortext-green;
+            font-weight: 600;
         }
     }
     &__price {
         font-weight: 300;
         font-size: 15px;
     }
+    &__icon {
+        width: 30px;
+    }
+    &__labels{
+        font-weight: 400;
+        font-size: 15px;
+
+    }
+    &__qtyBox{
+        font-weight: 300;
+        font-size: 17px;
+        width: 45px;
+    }
 }
 
 .cart {
-    width: 500px;
-    background-color: colorWhite;
-    padding: 25px;
-    box-sizing: border-box;
-    height: 100%;
-    position: fixed;
-    right: -100%;
-    top: 100px;
-    box-shadow: -19px -1px 22px -15px rgba(0, 0, 0, 0.30);
+  display: none;//para tenerlo oculto al momento de abrir la página y evitar el bug de la barra de desplazamiento
+  width: 500px;
+  background-color: $colorBgMenu;
+  padding: 5px;
+  box-sizing: border-box;
+  height: 90%;
+  position: absolute;
+  right: -100%;
+  top: 70px;
+  box-shadow: -19px -1px 22px -15px rgba(0, 0, 0, 0.3);
+  transition: all .25s ease;
+  position: fixed;
+  z-index: 1;
+  overflow-y: scroll;
+  &.show {
+    display: block;
+    right: 0;
+  }
 
     &__title {
         width: $maxWidhtPercent;
         text-align: center;
         font-size: 20px;
         font-weight: 600;
-        padding: 25px 0;
+        padding: 10px 0;
+        margin: 0;
         box-sizing: border-box;
     }
     &__products{
-        border-bottom: 1px solid #333;
+        border-bottom: 1px solid $colorAzulCielo;
         @include displayType(flex);
         padding: 15px;
+        background-color: $colorWhite;
     }
     &__products__img{
         width: 60px;
+        height: 60px;
     }
     &__description {
         font-weight: 300;
@@ -137,6 +188,138 @@ body {
     }
     &__delete-icon{
         width: $maxWidhtPercent;
+    }
+    &__btn-checkOut{
+        display: inline-block;
+        padding: 12px 24px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #ffffff;
+        background-color: $colorbutton-green; 
+        border: none;
+        border-radius: 8px; 
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        &:hover{
+        background-color: $colorbutton-green-hover; 
+        transform: scale(1.05); 
+        }
+        &:active{
+        background-color: $colorbutton-green-active; 
+        transform: scale(0.95); 
+        }
+        &:focus{
+        outline: none;
+        box-shadow: 0 0 5px $colorAzulCielo;
+        }
+    }     
+}
+.menu {
+    width: 300px;
+    background-color: $colorBgMenu;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 100%;
+    position: absolute;
+    left: -100%;
+    display: none;
+    top: 70px;
+    box-shadow: -19px -1px 22px -15px rgba(0, 0, 0, 0.30);
+    transition: all .25s ease;
+    position: fixed;
+    z-index: 1;
+    &.show {
+        display: block;
+        left: 0;
+      }
+    &__items {
+        list-style-type: none;
+        padding-inline-start: 15px;
+    }
+    &__titles {
+        font-size: 1.1rem;
+        font-weight: 450;
+        color: #000000;
+        padding-left: 20px;
+        margin: 0px;
+        &:hover{
+            font-weight: 600;
+        }
+    }
+    &__i {
+        @include displayType(flex);
+        justify-content: normal;
+        margin-top: 20px;
+        cursor: pointer;
+        &:hover{
+            transition: all 0.5s;
+            transform: scale(1.15);
+        }
+        &-close {
+            margin-top:0px;
+            cursor: pointer;
+            &:hover{
+                transition: all 0.5s;
+                transform: scale(1.15);
+            }
+        }
+    }
+    &__img {
+        width: 25px;
+    }
+    &__close {
+        @include displayType(flex);
+        justify-content: right;
+    }
+
+}
+.modals {
+    &__qtyError {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+        padding-top: 60px;
+        &-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 2px solid #007BFF; /* Borde azul */
+            width: 80%;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+
+        }
+    }
+    &-close {
+        color: red;
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        cursor: pointer;
+    }
+    &-error-icon {
+        color: red;
+        font-size: 50px;
+        border: 2px solid red;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+        line-height: 50px;
+    }
+    &-p{
+        font-family: Arial, sans-serif;
+        font-size: 1.2rem;
+        color: #333;
     }
 }
 @media (max-width: 820px) {

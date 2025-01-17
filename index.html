@@ -7,94 +7,64 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/styles.css">
+    <script src="js/products.js" defer></script>
+    <script src="js/functions.js" defer></script>
     <title>Alystore</title>
 </head>
 <body>
     <header class="header">
-        <i class="header__i"><img src="img/Icono-Menu.svg" alt="Icono Menu" class="header__icono"></i>
-        <img src="img/Icono-Empresa.jpg" alt="Logo ALystore" class="header__logo">
-        <i class="header__i"><img src="img/Icono-Carrito.svg" alt="icono de carrito" class="header__icono"></i>
+        <i class="header__i" id="header__icono-menu"><img src="img/Icono-Menu.png" alt="Icono Menu" class="header__icono"></i>
+        <img src="img/Logo-Familiar.png" alt="Logo ALystore" class="header__logo">
+        <i class="header__i" id="header__icono-carrito"><img src="img/Icono-Carrito.png" alt="icono de carrito" class="header__icono"><p class="header__carritoQty">0</p></i>
     </header>
     <main>
         <section class="banner">
-            <h2 class="banner__title">Productos Nuevos</h2>
-            <p class="banner__description">Conoce nuestros productos de alta calidad</p>
+            <h2 class="banner__title">Productos</h2>
+            <p class="banner__description">Suministros disponibles</p>
         </section>
-        <section class="products">
-            <article class="products__item">
-                <img src ="img/uniforme-col-1.jpg" alt="Uniforme 1 de Colombia" class="products__img">
-                <h3 class="products__title">Uniforme 1</h3>
-                <p class="products__price">$100</p>
-            </article>
-            <article class="products__item">
-                <img src ="img/uniforme-col-2.jpg" alt="Uniforme 2 de Colombia" class="products__img">
-                <h3 class="products__title">Uniforme 2 de Colombia</h3>
-                <p class="products__price">$200</p>
-            </article>
-            <article class="products__item">
-                <img src ="img/uniforme-col-3.jpg" alt="Uniforme 3 de Colombia" class="products__img">
-                <h3 class="products__title">Uniforme 3</h3>
-                <p class="products__price">$300</p>
-            </article>
-            <article class="products__item">
-                <img src ="img/uniforme-col-1.jpg" alt="Uniforme 1 de Colombia" class="products__img">
-                <h3 class="products__title">Uniforme 1</h3>
-                <p class="products__price">$100</p>
-            </article>
-            <article class="products__item">
-                <img src ="img/uniforme-col-2.jpg" alt="Uniforme 2 de Colombia" class="products__img">
-                <h3 class="products__title">Uniforme 2 de Colombia</h3>
-                <p class="products__price">$200</p>
-            </article>
-            <article class="products__item">
-                <img src ="img/uniforme-col-3.jpg" alt="Uniforme 3 de Colombia" class="products__img">
-                <h3 class="products__title">Uniforme 3</h3>
-                <p class="products__price">$300</p>
-            </article>
-            <article class="products__item">
-                <img src ="img/uniforme-col-1.jpg" alt="Uniforme 1 de Colombia" class="products__img">
-                <h3 class="products__title">Uniforme 1</h3>
-                <p class="products__price">$100</p>
-            </article>
-            <article class="products__item">
-                <img src ="img/uniforme-col-2.jpg" alt="Uniforme 2 de Colombia" class="products__img">
-                <h3 class="products__title">Uniforme 2 de Colombia</h3>
-                <p class="products__price">$200</p>
-            </article>
-            <article class="products__item">
-                <img src ="img/uniforme-col-3.jpg" alt="Uniforme 3 de Colombia" class="products__img">
-                <h3 class="products__title">Uniforme 3</h3>
-                <p class="products__price">$300</p>
-            </article>
-            <article class="products__item">
-                <img src ="img/uniforme-col-3.jpg" alt="Uniforme 3 de Colombia" class="products__img">
-                <h3 class="products__title">Uniforme 3</h3>
-                <p class="products__price">$300</p>
-            </article>
-            <article class="products__item">
-                <img src ="img/uniforme-col-1.jpg" alt="Uniforme 1 de Colombia" class="products__img">
-                <h3 class="products__title">Uniforme 1</h3>
-                <p class="products__price">$100</p>
-            </article>
-            <article class="products__item">
-                <img src ="img/uniforme-col-2.jpg" alt="Uniforme 2 de Colombia" class="products__img">
-                <h3 class="products__title">Uniforme 2 de Colombia</h3>
-                <p class="products__price">$200</p>
-            </article>
-            <article class="products__item">
-                <img src ="img/uniforme-col-3.jpg" alt="Uniforme 3 de Colombia" class="products__img">
-                <h3 class="products__title">Uniforme 3</h3>
-                <p class="products__price">$300</p>
-            </article>
+
+        <!--Se cambió todo el código de productos para llamarlos mejor desde Javascript-->
+        <section class="products" id="products-container"></section>
+        <!--Acá termina el listado de productos-->
+        
+        <section class="menu">
+            <div class="menu__close">
+                <i class="menu__i-close"><img src="img/icon-menu-close.png" alt="Icono Cerrar" class="menu__img"></i>
+            </div>
+            <div class="menu__div">
+                <ul class="menu__items">
+                    <li>
+                        <i class="menu__i"><img src="img/icon-home.png" alt="Icono Home" class="menu__img"><p class="menu__titles">Inicio</p></i>     
+                    </li>
+                    <li>
+                        <i class="menu__i"><img src="img/icon-aboutUs.png" alt="Icono Home" class="menu__img"><p class="menu__titles">Acerca de Nosotros</p></i> 
+                    </li>
+                    <li>
+                        <i class="menu__i"><img src="img/icon-contact.png" alt="Icono Home" class="menu__img"><p class="menu__titles">Contacto</p></i> 
+                    </li>
+                </ul>
+            </div>
         </section>
         <section class="cart">
             <h2 class="cart__title">CARRITO</h2>
-            <div class="cart__products">
-                <img src="img/uniforme-col-4.jpg" alt="Uniforme 4 de Colombia" class="cart__products__img">
-                <p class="cart__description">Uniforme 4 de Colombia</p>
-                <p class="cart__price">$170</p>
-                <i class="cart__i"><img src="img/Icono-Delete.png" alt="Icono Quitar" class="cart__delete-icon"/></i>
+            <div class="cart__content">
+              <!-- Acá estarán los productos generados con ayuda de javascript -->
             </div>
+            <div class="cart__total">
+              <p>Total: $<span id="cart-total">0</span></p>
+            </div>
+            <div class="cart__div-checkOut">
+              <button class="cart__btn-checkOut">Checkout</button>
+            </div>
+          </section>          
+        <section class="modals">
+            <div id="modals__qtyError" class="modals__qtyError">
+                <div class="modals__qtyError-content">
+                    <span class="modals-close">&times;</span>
+                    <div class="modals-error-icon">&times;</div>
+                    <p class="modals-p">Error: debes elegir una cantidad mayor o igual a 1 y menor a 12 para agregarlo al carrito.</p>
+                </div>
+            </div>        
         </section>
     </main>
 </body>
